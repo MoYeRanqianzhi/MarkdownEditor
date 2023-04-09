@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MoYeRanCTMD-me</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css">
+    <style>
+      /* 设置样式 */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        height: 100vh;
+      }
+      #editor {
+        flex: 1;
+        height: 100%;
+        border: none;
+        outline: none;
+        padding: 20px;
+        font-size: 16px;
+      }
+      #preview {
+        flex: 1;
+        height: 100%;
+        border: none;
+        outline: none;
+        padding: 20px;
+        font-size: 16px;
+        overflow-y: scroll;
+        background-color: #f6f8fa;
+      }
+      /* md样式 */
+      pre {
+        white-space: pre-wrap;       /* css-3 */
+        white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+        white-space: -pre-wrap;      /* Opera 4-6 */
+        white-space: -o-pre-wrap;    /* Opera 7 */
+        word-wrap: break-word;       /* Internet Explorer 5.5+ */
+        background-color: #f8f8f8;
+        border: 1px solid #dfdfdf;
+        margin-top: 1.5em;
+        margin-bottom: 1.5em;
+        padding: 0.125rem 0.3125rem 0.0625rem;
+     }
+
+      pre code {
+       background-color: transparent;
+       border: 0;
+       padding: 0;
+     }
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+  </head>
+  <body>
+    <!-- 左侧文本编辑器 -->
+    <textarea id="editor" placeholder="在这里输入Markdown文本">
+# ME
+
+# 欢迎使用Markdown编辑器ME
+#### CTMD *----------Create Text of Markdown*
+
+> **Markdown是一种轻量级的「标记语言」**
+Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面，Markdown文件的后缀名便是“.md”
+
+基本格式：
+```markdown
+# 标题H1
+
+## 标题H2
+
+### 标题H3
+
+#### 标题H4
+
+##### 标题H5
+
+###### 标题H6
+
+---
+~~删除线~~ <s>删除线（开启识别HTML标签时）</s>
+
+*斜体字* _斜体字_
+
+**粗体** __粗体__
+
+***粗斜体*** ___粗斜体___
+
+下标：O<sub>2</sub> 上标：2<sup>10</sup>
+
+[GitHub](https://github.com/)
+
+GitHub：<https://github.com>
+
+[![](https://s1.ax1x.com/2022/10/30/xIBsfK.png)](https://s1.ax1x.com/2022/10/30/xIBsfK.png)
+
+&copy; &  &uml; &trade; &iexcl; &pound;
+
+&amp; &lt; &gt; &yen; &euro; &reg; &plusmn; &para; &sect; &brvbar; &macr; &laquo; &middot; 
+
+X&sup2; Y&sup3; &frac34; &frac14;  &times;  &divide;   &raquo;
+
+---
+
+执行命令：`pip install --upgrade pip`
+```
+**效果如下：
+
+# 标题H1
+
+## 标题H2
+
+### 标题H3
+
+#### 标题H4
+
+##### 标题H5
+
+###### 标题H6
+
+---
+~~删除线~~ <s>删除线（开启识别HTML标签时）</s>
+
+*斜体字* _斜体字_
+
+**粗体** __粗体__
+
+***粗斜体*** ___粗斜体___
+
+下标：O<sub>2</sub> 上标：2<sup>10</sup>
+
+[GitHub](https://github.com/)
+
+GitHub：<https://github.com>
+
+[![](https://s1.ax1x.com/2022/10/30/xIBsfK.png)](https://s1.ax1x.com/2022/10/30/xIBsfK.png)
+
+&copy; &  &uml; &trade; &iexcl; &pound;
+
+&amp; &lt; &gt; &yen; &euro; &reg; &plusmn; &para; &sect; &brvbar; &macr; &laquo; &middot; 
+
+X&sup2; Y&sup3; &frac34; &frac14;  &times;  &divide;   &raquo;
+
+---
+
+执行命令：`pip install --upgrade pip`
+</textarea>
+
+    <!-- 右侧实时预览 -->
+    <div id="preview"></div>
+
+    <!-- 加载showdown.js库 -->
+    <script>
+      // 获取DOM元素
+      const editor = document.getElementById("editor");
+      const preview = document.getElementById("preview");
+
+      // 初始化showdown实例
+      const converter = new showdown.Converter();
+      // 获取编辑器文本
+      const markdown = editor.value;
+        // 将markdown转换为HTML
+        const html = converter.makeHtml(markdown);
+        // 在预览窗口中显示HTML
+        preview.innerHTML = html;
+
+      // 监听输入事件
+      editor.addEventListener("input", () => {
+        // 获取编辑器文本
+        const markdown = editor.value;
+
+        // 将markdown转换为HTML
+        const html = converter.makeHtml(markdown);
+
+        // 在预览窗口中显示HTML
+        preview.innerHTML = html;
+      });
+    </script>
+  </body>
+</html>
