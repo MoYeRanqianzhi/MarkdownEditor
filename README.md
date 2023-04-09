@@ -87,3 +87,5 @@ X&sup2; Y&sup3; &frac34; &frac14;  &times;  &divide;   &raquo;
 ---
 
 执行命令：`pip install --upgrade pip`
+
+### 部署于netlify
